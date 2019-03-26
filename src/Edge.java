@@ -9,13 +9,15 @@ public class Edge {
 
     // constructor
     public Edge(int start, int end, int weight) {
-        if (start < 0 || end < 0) throw new IllegalArgumentException("The vertex is non-negative!");
+        if (start < 0 || end < 0 || weight <= 0) {
+            throw new IllegalArgumentException("The vertex and weight are non-negative!");
+        }
         this.start = start;
         this.end = end;
         this.weight = weight;
     }
 
-    // the API for property of class Edge
+    // the API to return properties of class Edge
     public int getStart() {
         return start;
     }

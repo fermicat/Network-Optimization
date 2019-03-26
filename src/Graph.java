@@ -7,6 +7,11 @@ public class Graph {
         if (nVertex < 0) throw new IllegalArgumentException("The total vertex is non-negative!");
         this.nVertex = nVertex;
 
-        
+
+    }
+
+
+    public void connect(int start, int end, int weight) {
+        Edge e = new Edge(start, end, weight);
     }
 }
