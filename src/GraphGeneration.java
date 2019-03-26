@@ -7,7 +7,7 @@ public class GraphGeneration {
     private static final int edgePercent = 20;
 
 
-    public Graph firstGraphGenerator() {
+    public Graph firstGraphGeneration() {
         Graph graph = new Graph(totalVertex);
         Random r = new Random();
 
@@ -15,12 +15,13 @@ public class GraphGeneration {
     }
 
 
-    public Graph secondGraphGenerator() {
+    public Graph secondGraphGeneration() {
         Graph graph = new Graph(totalVertex);
         Random r = new Random();
 
         for (int i = 0; i < totalVertex; i++) {
             for (int j = i + 1; j < totalVertex; j++) {
+                // generate random int [1, 100]
                 int weight  = r.nextInt(100) + 1;
                 int connect = r.nextInt(100) + 1;
 
