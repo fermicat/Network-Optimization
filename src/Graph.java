@@ -3,7 +3,7 @@ import java.util.HashSet;
 public class Graph {
     private final int V;
     private int E;
-    private HashSet<Edge>[] adj;
+    public HashSet<Edge>[] adj;
 
     // constructor
     public Graph(int V) {
@@ -18,6 +18,11 @@ public class Graph {
 
 
     public void connect(int start, int end, int weight) {
-        Edge e = new Edge(start, end, weight);
+        Edge e;
+        e = new Edge(start, end, weight);
+        adj[start].add(e);
+        e = new Edge(end, start, weight);
+        adj[end].add(e);
+        E += 2;
     }
 }

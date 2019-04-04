@@ -3,13 +3,30 @@ import java.util.Random;
 public class GraphGeneration {
 
     private static final int totalVertex = 5000;
-    private static final int vertrxNum   = 6;
+    private static final int vertexNum   = 6;
     private static final int edgePercent = 20;
 
 
     public Graph firstGraphGeneration() {
         Graph graph = new Graph(totalVertex);
         Random r = new Random();
+        int totalEdge = 0;
+
+        // average degree
+        while (totalEdge < totalVertex * vertexNum / 2) {
+            int i = r.nextInt(totalVertex);
+            int j = r.nextInt(totalVertex);
+
+            if (i != j) {
+                int weight  = r.nextInt(100) + 1;
+                Edge edge = new Edge(i, j, weight);
+                if (!graph.adj[i].contains(edge)) {
+                    graph.connect(i, j, weight);
+                    totalEdge++;
+                }
+            }
+        }
+
 
         return graph;
     }
