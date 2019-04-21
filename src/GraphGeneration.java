@@ -7,7 +7,7 @@ public class GraphGeneration {
     private static final int edgePercent = 20;
 
 
-    public Graph firstGraphGeneration() {
+    public static Graph firstGraphGeneration() {
         Graph graph = new Graph(totalVertex);
         Random r = new Random();
         int totalEdge = 0;
@@ -32,7 +32,7 @@ public class GraphGeneration {
     }
 
 
-    public Graph secondGraphGeneration() {
+    public static Graph secondGraphGeneration() {
         Graph graph = new Graph(totalVertex);
         Random r = new Random();
 

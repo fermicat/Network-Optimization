@@ -3,9 +3,9 @@
  */
 
 public class Edge {
-    private int start;
-    private int end;
-    private int weight;
+    private static int start;
+    private static int end;
+    private static int weight;
 
     // constructor
     public Edge(int start, int end, int weight) {
