@@ -3,9 +3,9 @@
  */
 
 public class Edge {
-    private static int start;
-    private static int end;
-    private static int weight;
+    private final int start;
+    private final int end;
+    private final int weight;
 
     // constructor
     public Edge(int start, int end, int weight) {
@@ -28,5 +28,13 @@ public class Edge {
 
     public int getWeight() {
         return weight;
+    }
+
+    public int getOtherEnd(int x) {
+        if (x == start) return end;
+        else if (x == end) return start;
+        else {
+            throw new IllegalArgumentException("Not on this edge");
+        }
     }
 }

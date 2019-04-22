@@ -25,4 +25,8 @@ public class Graph {
         adj[end].add(e);
         E += 2;
     }
+
+    public int totVertex() {
+        return V;
+    }
 }

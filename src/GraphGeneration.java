@@ -2,9 +2,9 @@ import java.util.Random;
 
 public class GraphGeneration {
 
-    private static final int totalVertex = 5000;
-    private static final int vertexNum   = 6;
-    private static final int edgePercent = 20;
+    private static int totalVertex = 5000;
+    private static int vertexNum   = 6;
+    private static int edgePercent = 20;
 
 
     public static Graph firstGraphGeneration() {
@@ -26,7 +26,6 @@ public class GraphGeneration {
                 }
             }
         }
-
 
         return graph;
     }

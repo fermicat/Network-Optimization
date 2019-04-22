@@ -12,10 +12,12 @@ public class MaxHeap {
         size = 0;
     }
 
+    // return the max element
     public int maximum() {
         return vertex[1];
     }
 
+    // insert certain element and re-construct the heap
     public void insert(int v, int bw) {
         size++;
         vertex[size] = v;
@@ -23,14 +25,18 @@ public class MaxHeap {
         heapfy(size);
     }
 
+    // delete element by index
     public void delete(int index) {
+        if (index > size || index < 1) {
+            throw new IndexOutOfBoundsException("Heap out of bound");
+        }
         vertex[index] = vertex[size];
         value[index] = value[size];
         size--;
         heapfy(index);
     }
 
-
+    // procedure for construct heap
     private void heapfy(int k) {
         int left  = 2 * k;
         int right = 2 * k + 1;
@@ -53,6 +59,7 @@ public class MaxHeap {
         }
     }
 
+    // helper function
     private void swap(int i, int j) {
         int temp;
         temp = vertex[i];
@@ -62,4 +69,13 @@ public class MaxHeap {
         value[i] = value[j];
         value[j] = temp;
     }
+
+    public int getSize() {
+        return size;
+    }
+
+    public int get(int index) {
+        return vertex[index];
+    }
+
 }
