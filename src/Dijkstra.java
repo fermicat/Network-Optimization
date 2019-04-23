@@ -37,9 +37,35 @@ public class Dijkstra {
 
         // Main procedure of Dijkstra
         while (status[terminal] != Status.INTREE) {
-            // pick a fringe with max-bw
-            for (int i = 0; i < V; i++) {
 
+            // pick a fringe with max-bw
+            int maxBwIdx = -1;
+            int maxBw = Integer.MIN_VALUE;
+            for (int i = 0; i < V; i++) {
+                if (status[i] == Status.FRINGE && bw[i] > maxBw) {
+                    maxBw = bw[i];
+                    maxBwIdx = i;
+                }
+            }
+
+            status[maxBwIdx] = Status.INTREE;
+
+            HashSet<Edge> maxBwEdgeSet = graph.adj[maxBwIdx];
+            for (Edge e : maxBwEdgeSet) {
+                int w = e.getOtherEnd(maxBwIdx);
+                int minBwValue = Math.min(bw[maxBwIdx], e.getWeight());
+
+                // un-visited vertex
+                if (status[w] == Status.UNSEEN) {
+                    dad[w] = maxBwIdx;
+                    status[w] = Status.FRINGE;
+                    bw[w] = minBwValue;
+                }
+                // visited but optimal path
+                else if (status[w] == Status.FRINGE && bw[w] < minBwValue) {
+                    dad[w] = maxBwIdx;
+                    bw[w] = minBwValue;
+                }
             }
         }
 
@@ -94,17 +120,20 @@ public class Dijkstra {
                     heap.insert(w, bw[w]);
                 }
                 // visited but optimal path
-                else if (status[w] == Status.FRINGE && bw[w] <= minBwValue) {
+                else if (status[w] == Status.FRINGE && bw[w] < minBwValue) {
+                    heap.delete(w);         /// @dev w is not index?
+
                     dad[w] = maxBwIdx;
                     bw[w] = minBwValue;
 
                     // need to remove the element in pre-insert heap
+                    /*
                     for (int i = 1; i <= heap.getSize(); i++) {
                         if (heap.get(i) == w) {
                             heap.delete(i);
                             break;
                         }
-                    }
+                    }*/
                     heap.insert(w, bw[w]);
                 }
             }
