@@ -1,7 +1,5 @@
 import java.util.*;
 
-
-
 public class Kruskal {
 
     // WHITE - never visit; GREY - in queue; BLACK - out of queue

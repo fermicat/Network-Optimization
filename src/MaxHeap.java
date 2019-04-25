@@ -1,14 +1,16 @@
 public class MaxHeap {
 
     // use array to store the tree
-    private int[] name;     // store vertex name
-    private int[] value;    // store vertex bandwidth
+    private int[] name;        // store vertex name
+    private int[] value;       // store vertex bandwidth
+    private Integer[] nameToIndex; // a mapping from name to index
     private int size;
 
     // constructor
     public MaxHeap(int totSize) {
         name  = new int[totSize + 1];
         value = new int[totSize + 1];
+        nameToIndex = new Integer[totSize + 1];
         size  = 0;
     }
 
@@ -30,12 +32,14 @@ public class MaxHeap {
         if (index > size || index < 1) {
             throw new IndexOutOfBoundsException("Heap out of bound");
         }
+        nameToIndex[name[index]] = null;
         name[index] = name[size];
         value[index] = value[size];
         size--;
         heapfy(index);
     }
 
+    // to see if heap is empty
     public boolean isEmpty() {
         return (size == 0);
     }
@@ -74,9 +78,6 @@ public class MaxHeap {
         value[j] = temp;
     }
 
-    public int getSize() {
-        return size;
-    }
 
     public int get(int index) {
         return name[index];

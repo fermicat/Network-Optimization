@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 public class Dijkstra {
     // WHITE - never visit; GREY - in visiting; BLACK - visited
     enum Color {
@@ -8,6 +10,7 @@ public class Dijkstra {
     private static int[] dad;
     private static int[] bw;
     private static MaxHeap heap;
+    private static HashSet<Integer> fringeSet;
 
     public static int maxBandwidthPathNoHeap(Graph graph, int source, int terminal) {
         int V = graph.V();
@@ -18,17 +21,17 @@ public class Dijkstra {
         initialize(graph, source, false);
 
         // Main procedure of Dijkstra
-        while (status[terminal] != Color.BLACK) {
-
+        while (!fringeSet.isEmpty()) {
             // pick a fringe with max-bw
             int maxBwIdx = -1;
             int maxBwVal = Integer.MIN_VALUE;
-            for (int i = 0; i < V; i++) {
-                if (status[i] == Color.GREY && bw[i] > maxBwVal) {
-                    maxBwVal = bw[i];
-                    maxBwIdx = i;
+            for (int v : fringeSet) {
+                if (bw[v] > maxBwVal) {
+                    maxBwIdx = v;
+                    maxBwVal = bw[v];
                 }
             }
+            fringeSet.remove(maxBwIdx);
             status[maxBwIdx] = Color.BLACK;
 
             // visit its adj vertex
@@ -39,10 +42,11 @@ public class Dijkstra {
                 // un-visited vertex
                 if (status[w] == Color.WHITE) {
                     dad[w] = maxBwIdx;
-                    status[w] = Color.GREY;
                     bw[w] = minBwValue;
+                    status[w] = Color.GREY;     // put into fringe
+                    fringeSet.add(w);
                 }
-                // visited but optimal path
+                // in-fringe but optimal path
                 else if (status[w] == Color.GREY && bw[w] < minBwValue) {
                     dad[w] = maxBwIdx;
                     bw[w] = minBwValue;
@@ -124,6 +128,7 @@ public class Dijkstra {
             dad[w] = source;
             bw[w] = e.weight;
             if (isHeap) heap.insert(w, bw[w]);
+            else fringeSet.add(w);
         }
     }
 }
