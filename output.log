@@ -1,0 +1,341 @@
+The Network Optimization demo begins:...
+
+
+		The 1 th pairs of graph:
+
+	s = 754, t = 3614
+Dijkstra without heap:
+  first graph: bw = 785  Running time: 175ms
+  second graph: bw = 998  Running time: 369ms
+
+Dijkstra with heap:
+  first graph: bw = 785  Running time: 11ms
+  second graph: bw = 998  Running time: 217ms
+
+Kruskal:
+  first graph: bw = 785  Running time: 25ms
+  second graph: bw = 998  Running time: 969ms
+
+	s = 4568, t = 2804
+Dijkstra without heap:
+  first graph: bw = 700  Running time: 38ms
+  second graph: bw = 999  Running time: 377ms
+
+Dijkstra with heap:
+  first graph: bw = 700  Running time: 4ms
+  second graph: bw = 999  Running time: 212ms
+
+Kruskal:
+  first graph: bw = 700  Running time: 9ms
+  second graph: bw = 999  Running time: 899ms
+
+	s = 707, t = 3838
+Dijkstra without heap:
+  first graph: bw = 380  Running time: 144ms
+  second graph: bw = 996  Running time: 345ms
+
+Dijkstra with heap:
+  first graph: bw = 380  Running time: 3ms
+  second graph: bw = 996  Running time: 170ms
+
+Kruskal:
+  first graph: bw = 380  Running time: 7ms
+  second graph: bw = 996  Running time: 888ms
+
+	s = 4953, t = 315
+Dijkstra without heap:
+  first graph: bw = 545  Running time: 140ms
+  second graph: bw = 999  Running time: 346ms
+
+Dijkstra with heap:
+  first graph: bw = 545  Running time: 3ms
+  second graph: bw = 999  Running time: 173ms
+
+Kruskal:
+  first graph: bw = 545  Running time: 7ms
+  second graph: bw = 999  Running time: 892ms
+
+	s = 1587, t = 1183
+Dijkstra without heap:
+  first graph: bw = 718  Running time: 135ms
+  second graph: bw = 998  Running time: 211ms
+
+Dijkstra with heap:
+  first graph: bw = 718  Running time: 3ms
+  second graph: bw = 998  Running time: 172ms
+
+Kruskal:
+  first graph: bw = 718  Running time: 60ms
+  second graph: bw = 998  Running time: 1128ms
+
+
+		The 2 th pairs of graph:
+
+	s = 816, t = 3884
+Dijkstra without heap:
+  first graph: bw = 740  Running time: 39ms
+  second graph: bw = 999  Running time: 297ms
+
+Dijkstra with heap:
+  first graph: bw = 740  Running time: 3ms
+  second graph: bw = 999  Running time: 136ms
+
+Kruskal:
+  first graph: bw = 740  Running time: 5ms
+  second graph: bw = 999  Running time: 991ms
+
+	s = 488, t = 1835
+Dijkstra without heap:
+  first graph: bw = 636  Running time: 38ms
+  second graph: bw = 994  Running time: 177ms
+
+Dijkstra with heap:
+  first graph: bw = 636  Running time: 3ms
+  second graph: bw = 994  Running time: 136ms
+
+Kruskal:
+  first graph: bw = 636  Running time: 6ms
+  second graph: bw = 994  Running time: 839ms
+
+	s = 3318, t = 1516
+Dijkstra without heap:
+  first graph: bw = 724  Running time: 35ms
+  second graph: bw = 999  Running time: 180ms
+
+Dijkstra with heap:
+  first graph: bw = 724  Running time: 2ms
+  second graph: bw = 999  Running time: 135ms
+
+Kruskal:
+  first graph: bw = 724  Running time: 5ms
+  second graph: bw = 999  Running time: 834ms
+
+	s = 372, t = 2323
+Dijkstra without heap:
+  first graph: bw = 609  Running time: 34ms
+  second graph: bw = 999  Running time: 180ms
+
+Dijkstra with heap:
+  first graph: bw = 609  Running time: 3ms
+  second graph: bw = 999  Running time: 134ms
+
+Kruskal:
+  first graph: bw = 609  Running time: 6ms
+  second graph: bw = 999  Running time: 835ms
+
+	s = 3699, t = 489
+Dijkstra without heap:
+  first graph: bw = 734  Running time: 36ms
+  second graph: bw = 999  Running time: 180ms
+
+Dijkstra with heap:
+  first graph: bw = 734  Running time: 3ms
+  second graph: bw = 999  Running time: 134ms
+
+Kruskal:
+  first graph: bw = 734  Running time: 6ms
+  second graph: bw = 999  Running time: 832ms
+
+
+		The 3 th pairs of graph:
+
+	s = 1463, t = 678
+Dijkstra without heap:
+  first graph: bw = 566  Running time: 39ms
+  second graph: bw = 997  Running time: 210ms
+
+Dijkstra with heap:
+  first graph: bw = 566  Running time: 2ms
+  second graph: bw = 997  Running time: 167ms
+
+Kruskal:
+  first graph: bw = 566  Running time: 5ms
+  second graph: bw = 997  Running time: 914ms
+
+	s = 433, t = 531
+Dijkstra without heap:
+  first graph: bw = 684  Running time: 44ms
+  second graph: bw = 998  Running time: 193ms
+
+Dijkstra with heap:
+  first graph: bw = 684  Running time: 3ms
+  second graph: bw = 998  Running time: 158ms
+
+Kruskal:
+  first graph: bw = 684  Running time: 5ms
+  second graph: bw = 998  Running time: 773ms
+
+	s = 3279, t = 2779
+Dijkstra without heap:
+  first graph: bw = 506  Running time: 34ms
+  second graph: bw = 999  Running time: 200ms
+
+Dijkstra with heap:
+  first graph: bw = 506  Running time: 3ms
+  second graph: bw = 999  Running time: 159ms
+
+Kruskal:
+  first graph: bw = 506  Running time: 5ms
+  second graph: bw = 999  Running time: 777ms
+
+	s = 2271, t = 1388
+Dijkstra without heap:
+  first graph: bw = 389  Running time: 32ms
+  second graph: bw = 999  Running time: 201ms
+
+Dijkstra with heap:
+  first graph: bw = 389  Running time: 2ms
+  second graph: bw = 999  Running time: 160ms
+
+Kruskal:
+  first graph: bw = 389  Running time: 5ms
+  second graph: bw = 999  Running time: 779ms
+
+	s = 3594, t = 2804
+Dijkstra without heap:
+  first graph: bw = 749  Running time: 35ms
+  second graph: bw = 998  Running time: 191ms
+
+Dijkstra with heap:
+  first graph: bw = 749  Running time: 3ms
+  second graph: bw = 998  Running time: 160ms
+
+Kruskal:
+  first graph: bw = 749  Running time: 5ms
+  second graph: bw = 998  Running time: 780ms
+
+
+		The 4 th pairs of graph:
+
+	s = 1226, t = 1864
+Dijkstra without heap:
+  first graph: bw = 572  Running time: 39ms
+  second graph: bw = 999  Running time: 199ms
+
+Dijkstra with heap:
+  first graph: bw = 572  Running time: 3ms
+  second graph: bw = 999  Running time: 160ms
+
+Kruskal:
+  first graph: bw = 572  Running time: 5ms
+  second graph: bw = 999  Running time: 836ms
+
+	s = 1164, t = 2159
+Dijkstra without heap:
+  first graph: bw = 786  Running time: 36ms
+  second graph: bw = 998  Running time: 196ms
+
+Dijkstra with heap:
+  first graph: bw = 786  Running time: 2ms
+  second graph: bw = 998  Running time: 161ms
+
+Kruskal:
+  first graph: bw = 786  Running time: 5ms
+  second graph: bw = 998  Running time: 836ms
+
+	s = 2381, t = 539
+Dijkstra without heap:
+  first graph: bw = 676  Running time: 37ms
+  second graph: bw = 998  Running time: 195ms
+
+Dijkstra with heap:
+  first graph: bw = 676  Running time: 3ms
+  second graph: bw = 998  Running time: 159ms
+
+Kruskal:
+  first graph: bw = 676  Running time: 5ms
+  second graph: bw = 998  Running time: 833ms
+
+	s = 3332, t = 1610
+Dijkstra without heap:
+  first graph: bw = 723  Running time: 35ms
+  second graph: bw = 998  Running time: 193ms
+
+Dijkstra with heap:
+  first graph: bw = 723  Running time: 3ms
+  second graph: bw = 998  Running time: 158ms
+
+Kruskal:
+  first graph: bw = 723  Running time: 5ms
+  second graph: bw = 998  Running time: 836ms
+
+	s = 4713, t = 550
+Dijkstra without heap:
+  first graph: bw = 430  Running time: 35ms
+  second graph: bw = 999  Running time: 200ms
+
+Dijkstra with heap:
+  first graph: bw = 430  Running time: 4ms
+  second graph: bw = 999  Running time: 157ms
+
+Kruskal:
+  first graph: bw = 430  Running time: 6ms
+  second graph: bw = 999  Running time: 835ms
+
+
+		The 5 th pairs of graph:
+
+	s = 1968, t = 4889
+Dijkstra without heap:
+  first graph: bw = 552  Running time: 35ms
+  second graph: bw = 999  Running time: 202ms
+
+Dijkstra with heap:
+  first graph: bw = 552  Running time: 2ms
+  second graph: bw = 999  Running time: 162ms
+
+Kruskal:
+  first graph: bw = 552  Running time: 5ms
+  second graph: bw = 999  Running time: 835ms
+
+	s = 4543, t = 4398
+Dijkstra without heap:
+  first graph: bw = 768  Running time: 36ms
+  second graph: bw = 999  Running time: 198ms
+
+Dijkstra with heap:
+  first graph: bw = 768  Running time: 2ms
+  second graph: bw = 999  Running time: 161ms
+
+Kruskal:
+  first graph: bw = 768  Running time: 5ms
+  second graph: bw = 999  Running time: 835ms
+
+	s = 4457, t = 2575
+Dijkstra without heap:
+  first graph: bw = 804  Running time: 36ms
+  second graph: bw = 999  Running time: 198ms
+
+Dijkstra with heap:
+  first graph: bw = 804  Running time: 3ms
+  second graph: bw = 999  Running time: 163ms
+
+Kruskal:
+  first graph: bw = 804  Running time: 5ms
+  second graph: bw = 999  Running time: 835ms
+
+	s = 2074, t = 4625
+Dijkstra without heap:
+  first graph: bw = 676  Running time: 35ms
+  second graph: bw = 998  Running time: 200ms
+
+Dijkstra with heap:
+  first graph: bw = 676  Running time: 3ms
+  second graph: bw = 998  Running time: 161ms
+
+Kruskal:
+  first graph: bw = 676  Running time: 5ms
+  second graph: bw = 998  Running time: 835ms
+
+	s = 4346, t = 4503
+Dijkstra without heap:
+  first graph: bw = 643  Running time: 36ms
+  second graph: bw = 999  Running time: 201ms
+
+Dijkstra with heap:
+  first graph: bw = 643  Running time: 2ms
+  second graph: bw = 999  Running time: 163ms
+
+Kruskal:
+  first graph: bw = 643  Running time: 5ms
+  second graph: bw = 999  Running time: 910ms
