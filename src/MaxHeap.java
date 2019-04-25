@@ -5,13 +5,18 @@ public class MaxHeap {
     private int[] value;       // store vertex bandwidth
     private Integer[] nameToIndex; // a mapping from name to index
     private int size;
+    private final int total;
 
     // constructor
     public MaxHeap(int totSize) {
+        total = totSize;
         name  = new int[totSize + 1];
         value = new int[totSize + 1];
-        nameToIndex = new Integer[totSize + 1];
+        nameToIndex = new Integer[totSize];
         size  = 0;
+        // virtual node with bw - infinity
+        name[1] = total;
+        value[total] = Integer.MIN_VALUE;
     }
 
     // return the max element (name)
@@ -24,7 +29,9 @@ public class MaxHeap {
         size++;
         name[size] = v;
         value[v] = bw;
-        heapfy(size);
+        nameToIndex[v] = size;
+
+        heapify(size);
     }
 
     // delete element by index
@@ -35,8 +42,10 @@ public class MaxHeap {
         nameToIndex[name[index]] = null;
         name[index] = name[size];
         nameToIndex[name[index]] = index;
+
+        name[size] = total; // virtual node
         size--;
-        heapfy(index);
+        heapify(index);
     }
 
     // delete element by name
@@ -51,25 +60,39 @@ public class MaxHeap {
     }
 
     // procedure for construct heap
-    private void heapfy(int k) {
-        int left  = 2 * k;
-        int right = 2 * k + 1;
-        int large = k;
-        int tempLarge = k;
+    private void heapify(int k) {
+        int left   = 2 * k;
+        int right  = 2 * k + 1;
+        int parent = k / 2;
 
-        if (left <= size && value[left] > value[k]) {
-            large = left;
+        // pushing up
+        if (k > 1 && value[name[k]] > value[name[parent]]) {
+            int cur = k;
+            while (cur > 1 && value[name[cur]] > value[name[parent]]) {
+                swap(cur, parent);
+                cur = parent;
+                parent = cur / 2;
+            }
         }
-        if (right <= size && value[right] > value[k]) {
-            tempLarge = right;
-        }
-        if (value[large] < value[tempLarge]) {
-            large = tempLarge;
-        }
-
-        if (large != k) {
-            swap(large, k);
-            heapfy(large);
+        // pushing down
+        else if (!isLeaf(k) && value[name[k]] < Math.max(value[name[left]], value[name[right]])) {
+            int cur = k;
+            while (!isLeaf(cur) && value[name[cur]] < Math.max(value[name[left]], value[name[right]])) {
+                if (right > size) {
+                    swap(cur, left);
+                    break;
+                }
+                else if (value[name[left]] > value[name[right]]) {
+                    swap(cur, left);
+                    cur = left;
+                }
+                else {
+                    swap(cur, right);
+                    cur = right;
+                }
+                left = 2 * cur;
+                right = 2 * cur + 1;
+            }
         }
     }
 
@@ -84,11 +107,15 @@ public class MaxHeap {
         nameToIndex[name[j]] = j;
     }
 
+    private boolean isLeaf(int index) {
+        return (index > size / 2);
+    }
+
     public String toString() {
         StringBuilder s = new StringBuilder();
         s.append("The heap: \n");
         for (int i = 1; i <= size; i++) {
-            s.append(name[i] + " (" + value[i] + "), ");
+            s.append(name[i] + " (" + value[name[i]] + "), ");
         }
         s.append("\n");
 

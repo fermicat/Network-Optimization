@@ -26,7 +26,7 @@ public class GraphGeneration {
             }
         }
 
-        System.out.println("first graph:\n" + graph.toString());
+        //System.out.println("first graph:\n" + graph.toString());
         return graph;
     }
 
@@ -37,7 +37,7 @@ public class GraphGeneration {
      * @return a constructed graph
      */
     public static Graph secondGraphGeneration(int totalVertex, int edgePercent) {
-        Graph graph = new Graph(totalVertex);
+        Graph graph = cycleGraph(totalVertex);
 
         for (int i = 0; i < totalVertex; i++) {
             for (int j = i + 2; j < totalVertex; j++) {
@@ -52,7 +52,7 @@ public class GraphGeneration {
             }
         }
 
-        System.out.println("second graph:\n" + graph.toString());
+        //System.out.println("second graph:\n" + graph.toString());
         return graph;
     }
 
@@ -70,7 +70,7 @@ public class GraphGeneration {
         int weight = r.nextInt(1000) + 1;
         graph.connect(totalVertex - 1, 0, weight);
 
-        System.out.println("Initial cycle graph:\n" + graph.toString());
+        //System.out.println("Initial cycle graph:\n" + graph.toString());
         return graph;
     }
 }

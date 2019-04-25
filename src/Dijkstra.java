@@ -24,6 +24,7 @@ public class Dijkstra {
         status = new Color[V];
         dad = new int[V];
         bw  = new int[V];
+        fringeSet = new HashSet<>();
 
         initialize(graph, source, false);
 
