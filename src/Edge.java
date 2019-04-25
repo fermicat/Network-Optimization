@@ -1,4 +1,4 @@
-/*
+/**
  * @description this class is designed for edge of graph
  */
 

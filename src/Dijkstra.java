@@ -1,75 +1,49 @@
-import java.util.HashSet;
-
-
 public class Dijkstra {
-    enum Status {
-        UNSEEN, FRINGE, INTREE
+    // WHITE - never visit; GREY - in visiting; BLACK - visited
+    enum Color {
+        WHITE, GREY, BLACK
     }
 
-    private static Status[] status;
+    private static Color[] status;
     private static int[] dad;
     private static int[] bw;
     private static MaxHeap heap;
 
     public static int maxBandwidthPathNoHeap(Graph graph, int source, int terminal) {
-        // initialize the Dijkstra Algorithm
         int V = graph.V();
-        status = new Status[V];
+        status = new Color[V];
         dad = new int[V];
         bw  = new int[V];
 
-        for (int i = 0; i < V; i++) {
-            status[i] = Status.UNSEEN;
-            bw[i] = Integer.MAX_VALUE;
-        }
-
-        // put source point in-tree
-        status[source] = Status.INTREE;
-        dad[source] = -1;
-
-        // visit the point adj to the source
-        HashSet<Edge> sourceEdgeSet = graph.adj[source];
-        for (Edge e : sourceEdgeSet) {
-            int w = e.getEnd(source);
-            status[w] = Status.FRINGE;
-            dad[w] = source;
-            bw[w] = e.weight;
-        }
+        initialize(graph, source, false);
 
         // Main procedure of Dijkstra
-        while (status[terminal] != Status.INTREE) {
+        while (status[terminal] != Color.BLACK) {
 
             // pick a fringe with max-bw
             int maxBwIdx = -1;
             int maxBwVal = Integer.MIN_VALUE;
             for (int i = 0; i < V; i++) {
-                if (status[i] == Status.FRINGE && bw[i] > maxBwVal) {
+                if (status[i] == Color.GREY && bw[i] > maxBwVal) {
                     maxBwVal = bw[i];
                     maxBwIdx = i;
                 }
             }
+            status[maxBwIdx] = Color.BLACK;
 
-            try {
-                status[maxBwIdx] = Status.INTREE;
-            }
-            catch (Exception e) {
-                System.out.println("maxBwIdx = " + maxBwIdx);
-                throw new IllegalArgumentException("max Bw index illegal!");
-            }
-
-            HashSet<Edge> maxBwEdgeSet = graph.adj[maxBwIdx];
-            for (Edge e : maxBwEdgeSet) {
+            // visit its adj vertex
+            for (Edge e : graph.adj[maxBwIdx]) {
                 int w = e.getEnd(maxBwIdx);
                 int minBwValue = Math.min(bw[maxBwIdx], e.weight);
 
                 // un-visited vertex
-                if (status[w] == Status.UNSEEN) {
+                if (status[w] == Color.WHITE) {
                     dad[w] = maxBwIdx;
-                    status[w] = Status.FRINGE;
+                    status[w] = Color.GREY;
                     bw[w] = minBwValue;
                 }
                 // visited but optimal path
-                else if (status[w] == Status.FRINGE && bw[w] < minBwValue) {
+                else if (status[w] == Color.GREY && bw[w] < minBwValue) {
                     dad[w] = maxBwIdx;
                     bw[w] = minBwValue;
                 }
@@ -81,53 +55,35 @@ public class Dijkstra {
 
 
     public static int maxBandwidthPath(Graph graph, int source, int terminal) {
-        // initialize the Dijkstra Algorithm
         int V = graph.V();
-        status = new Status[V];
+        status = new Color[V];
         dad = new int[V];
         bw  = new int[V];
         heap = new MaxHeap(V);
 
-        for (int i = 0; i < V; i++) {
-            status[i] = Status.UNSEEN;
-            bw[i] = Integer.MAX_VALUE;
-        }
-
-        // put source point in-tree
-        status[source] = Status.INTREE;
-        dad[source] = -1;
-
-        // visit the point adj to the source and put into heap
-        HashSet<Edge> sourceEdgeSet = graph.adj[source];
-        for (Edge e : sourceEdgeSet) {
-            int w = e.getEnd(source);
-            status[w] = Status.FRINGE;
-            dad[w] = source;
-            bw[w] = e.weight;
-            heap.insert(w, bw[w]);
-        }
+        initialize(graph, source, true);
 
         // Main procedure of Dijkstra
-        while (status[terminal] != Status.INTREE) {
+        while (!heap.isEmpty()) {
             // pick a fringe with max-bw
             int maxBwIdx = heap.maximum();
-            status[maxBwIdx] = Status.INTREE;
+            status[maxBwIdx] = Color.BLACK;
             heap.delete(1);
 
-            HashSet<Edge> maxBwEdgeSet = graph.adj[maxBwIdx];
-            for (Edge e : maxBwEdgeSet) {
+            // visit its adj vertex
+            for (Edge e : graph.adj[maxBwIdx]) {
                 int w = e.getEnd(maxBwIdx);
                 int minBwValue = Math.min(bw[maxBwIdx], e.weight);
 
                 // un-visited vertex
-                if (status[w] == Status.UNSEEN) {
+                if (status[w] == Color.WHITE) {
                     dad[w] = maxBwIdx;
-                    status[w] = Status.FRINGE;
+                    status[w] = Color.GREY;
                     bw[w] = minBwValue;
                     heap.insert(w, bw[w]);
                 }
                 // visited but optimal path
-                else if (status[w] == Status.FRINGE && bw[w] < minBwValue) {
+                else if (status[w] == Color.GREY && bw[w] < minBwValue) {
                     heap.delete(w);         /// @dev w is not index?
 
                     dad[w] = maxBwIdx;
@@ -147,5 +103,27 @@ public class Dijkstra {
         }
 
         return bw[terminal];
+    }
+
+    // initialization for Dijkstra
+    // isHeap - flag of using heap or not
+    private static void initialize(Graph graph, int source, boolean isHeap) {
+        for (int i = 0; i < graph.V(); i++) {
+            status[i] = Color.WHITE;
+            bw[i] = Integer.MAX_VALUE;
+        }
+
+        // put source point in-tree
+        status[source] = Color.BLACK;
+        dad[source] = -1;
+
+        // visit the point adj to the source
+        for (Edge e : graph.adj[source]) {
+            int w = e.getEnd(source);
+            status[w] = Color.GREY;
+            dad[w] = source;
+            bw[w] = e.weight;
+            if (isHeap) heap.insert(w, bw[w]);
+        }
     }
 }

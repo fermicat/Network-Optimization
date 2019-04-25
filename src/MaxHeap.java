@@ -36,6 +36,10 @@ public class MaxHeap {
         heapfy(index);
     }
 
+    public boolean isEmpty() {
+        return (size == 0);
+    }
+
     // procedure for construct heap
     private void heapfy(int k) {
         int left  = 2 * k;

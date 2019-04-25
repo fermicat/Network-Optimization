@@ -87,17 +87,20 @@ public class Kruskal {
         status[source] = Color.GREY;
         queue.offer(source);
 
+        // BFS
         while(!queue.isEmpty()) {
             int v = queue.poll();
             HashSet<Edge> edgeSet = maxSpanTree.adj[v];
             for (Edge e : edgeSet) {
                 int w = e.getEnd(v);
+                // not visited
                 if (status[w] == Color.WHITE) {
                     status[w] = Color.GREY;
                     queue.offer(w);
                     dad[w] = v;
                     bw[w] = Math.min(bw[v], e.weight);
                 }
+                // visited, but have optimal bw
                 else if (status[w] == Color.GREY && bw[w] < Math.min(bw[v], e.weight)) {
                     dad[w] = v;
                     bw[w] = Math.min(bw[v], e.weight);
