@@ -12,7 +12,7 @@ public class Graph {
         this.E = 0;
         adj = new HashSet[V];
         for (int i = 0; i < V; i++) {
-            adj[i] = new HashSet<Edge>();
+            adj[i] = new HashSet<>();
         }
     }
 
@@ -58,7 +58,7 @@ public class Graph {
         for (int i = 0; i < V; i++) {
             s.append(i + ": ");
             for (Edge e : adj[i]) {
-                s.append(e.getEnd(i) + " (" + e.getWeight() + "), ");
+                s.append(e.getEnd(i) + " (" + e.weight + "), ");
             }
             s.append("\n");
         }

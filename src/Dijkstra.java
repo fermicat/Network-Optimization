@@ -1,10 +1,11 @@
 import java.util.HashSet;
 
-enum Status {
-    UNSEEN, FRINGE, INTREE
-}
 
 public class Dijkstra {
+    enum Status {
+        UNSEEN, FRINGE, INTREE
+    }
+
     private static Status[] status;
     private static int[] dad;
     private static int[] bw;
@@ -32,7 +33,7 @@ public class Dijkstra {
             int w = e.getEnd(source);
             status[w] = Status.FRINGE;
             dad[w] = source;
-            bw[w] = e.getWeight();
+            bw[w] = e.weight;
         }
 
         // Main procedure of Dijkstra
@@ -59,7 +60,7 @@ public class Dijkstra {
             HashSet<Edge> maxBwEdgeSet = graph.adj[maxBwIdx];
             for (Edge e : maxBwEdgeSet) {
                 int w = e.getEnd(maxBwIdx);
-                int minBwValue = Math.min(bw[maxBwIdx], e.getWeight());
+                int minBwValue = Math.min(bw[maxBwIdx], e.weight);
 
                 // un-visited vertex
                 if (status[w] == Status.UNSEEN) {
@@ -102,7 +103,7 @@ public class Dijkstra {
             int w = e.getEnd(source);
             status[w] = Status.FRINGE;
             dad[w] = source;
-            bw[w] = e.getWeight();
+            bw[w] = e.weight;
             heap.insert(w, bw[w]);
         }
 
@@ -116,7 +117,7 @@ public class Dijkstra {
             HashSet<Edge> maxBwEdgeSet = graph.adj[maxBwIdx];
             for (Edge e : maxBwEdgeSet) {
                 int w = e.getEnd(maxBwIdx);
-                int minBwValue = Math.min(bw[maxBwIdx], e.getWeight());
+                int minBwValue = Math.min(bw[maxBwIdx], e.weight);
 
                 // un-visited vertex
                 if (status[w] == Status.UNSEEN) {

@@ -78,4 +78,15 @@ public class MaxHeap {
         return name[index];
     }
 
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append("The heap: \n");
+        for (int i = 1; i <= size; i++) {
+            s.append(name[i] + " (" + value[i] + "), ");
+        }
+        s.append("\n");
+
+        return s.toString();
+    }
+
 }

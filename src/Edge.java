@@ -3,9 +3,9 @@
  */
 
 public class Edge {
-    private final int start;
-    private final int end;
-    private final int weight;
+    public final int start;
+    public final int end;
+    public final int weight;
 
     // constructor
     public Edge(int start, int end, int weight) {
@@ -18,10 +18,6 @@ public class Edge {
     }
 
     // the API to return properties of class Edge
-    public int getWeight() {
-        return weight;
-    }
-
     public int getEnd(int x) {
         if (x == start) return end;
         else if (x == end) return start;
