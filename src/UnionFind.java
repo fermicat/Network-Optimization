@@ -13,7 +13,6 @@ public class UnionFind {
         }
     }
 
-
     /**
      * Returns the component identifier for the component containing site p.
      *

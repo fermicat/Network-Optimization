@@ -23,7 +23,7 @@ public class MaxHeap {
     public void insert(int v, int bw) {
         size++;
         name[size] = v;
-        value[size] = bw;
+        value[v] = bw;
         heapfy(size);
     }
 
@@ -34,9 +34,15 @@ public class MaxHeap {
         }
         nameToIndex[name[index]] = null;
         name[index] = name[size];
-        value[index] = value[size];
+        nameToIndex[name[index]] = index;
         size--;
         heapfy(index);
+    }
+
+    // delete element by name
+    public void deleteVertex(int vertex) {
+        int index = nameToIndex[vertex];
+        delete(index);
     }
 
     // to see if heap is empty
@@ -73,15 +79,11 @@ public class MaxHeap {
         temp = name[i];
         name[i] = name[j];
         name[j] = temp;
-        temp = value[i];
-        value[i] = value[j];
-        value[j] = temp;
+
+        nameToIndex[name[i]] = i;
+        nameToIndex[name[j]] = j;
     }
 
-
-    public int get(int index) {
-        return name[index];
-    }
 
     public String toString() {
         StringBuilder s = new StringBuilder();

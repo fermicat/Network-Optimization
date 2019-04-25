@@ -62,9 +62,7 @@ public class Graph {
             }
             s.append("\n");
         }
-        String result = s.toString();
-        System.out.println(result);
-        return result;
+        return s.toString();
     }
 
 }

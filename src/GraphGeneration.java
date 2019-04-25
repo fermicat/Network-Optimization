@@ -2,13 +2,14 @@ import java.util.Random;
 
 public class GraphGeneration {
 
-    private static int totalVertex = 5000;
-    private static int vertexNum   = 6;
-    private static int edgePercent = 20;
-
-
-    public static Graph firstGraphGeneration() {
-        Graph graph = cycleGraph();
+    /**
+     * the procedure to generate the graph with average vertex degree
+     * @param totalVertex total Vertex in the graph (default 5000)
+     * @param vertexNum   vertex degree (default 6)
+     * @return a constructed graph
+     */
+    public static Graph firstGraphGeneration(int totalVertex, int vertexNum) {
+        Graph graph = cycleGraph(totalVertex);
         Random r = new Random();
 
         // average degree
@@ -25,13 +26,17 @@ public class GraphGeneration {
             }
         }
 
-        System.out.println("first graph:");
-        graph.toString();
+        System.out.println("first graph:\n" + graph.toString());
         return graph;
     }
 
-
-    public static Graph secondGraphGeneration() {
+    /**
+     * the procedure to generate the graph with percent% connect to other point
+     * @param totalVertex total Vertex in the graph (default 5000)
+     * @param edgePercent the percent% to connect (default 20)
+     * @return a constructed graph
+     */
+    public static Graph secondGraphGeneration(int totalVertex, int edgePercent) {
         Graph graph = new Graph(totalVertex);
         Random r = new Random();
 
@@ -48,13 +53,12 @@ public class GraphGeneration {
             }
         }
 
-        System.out.println("first graph:");
-        graph.toString();
+        System.out.println("second graph:\n" + graph.toString());
         return graph;
     }
 
-
-    private static Graph cycleGraph() {
+    // construct the cycle graph to maintain connected
+    private static Graph cycleGraph(int totalVertex) {
         Graph graph = new Graph(totalVertex);
         Random r = new Random();
 
@@ -67,8 +71,7 @@ public class GraphGeneration {
         int weight = r.nextInt(1000) + 1;
         graph.connect(totalVertex - 1, 0, weight);
 
-        System.out.println("Initial cycle graph:");
-        graph.toString();
+        System.out.println("Initial cycle graph:\n" + graph.toString());
         return graph;
     }
 }

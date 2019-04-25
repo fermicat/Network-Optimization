@@ -12,6 +12,13 @@ public class Dijkstra {
     private static MaxHeap heap;
     private static HashSet<Integer> fringeSet;
 
+    /**
+     * the Dijkstra Algorithm to find max Bandwidth Path without heap
+     * @param graph     the graph to find
+     * @param source    source s
+     * @param terminal  terminal t
+     * @return the bandwidth of t
+     */
     public static int maxBandwidthPathNoHeap(Graph graph, int source, int terminal) {
         int V = graph.V();
         status = new Color[V];
@@ -57,7 +64,13 @@ public class Dijkstra {
         return bw[terminal];
     }
 
-
+    /**
+     * the Dijkstra Algorithm to find max Bandwidth Path with heap
+     * @param graph     the graph to find
+     * @param source    source s
+     * @param terminal  terminal t
+     * @return the bandwidth of t
+     */
     public static int maxBandwidthPath(Graph graph, int source, int terminal) {
         int V = graph.V();
         status = new Color[V];
@@ -82,25 +95,15 @@ public class Dijkstra {
                 // un-visited vertex
                 if (status[w] == Color.WHITE) {
                     dad[w] = maxBwIdx;
-                    status[w] = Color.GREY;
                     bw[w] = minBwValue;
+                    status[w] = Color.GREY;
                     heap.insert(w, bw[w]);
                 }
                 // visited but optimal path
                 else if (status[w] == Color.GREY && bw[w] < minBwValue) {
-                    heap.delete(w);         /// @dev w is not index?
-
                     dad[w] = maxBwIdx;
                     bw[w] = minBwValue;
-
-                    // need to remove the element in pre-insert heap
-                    /*
-                    for (int i = 1; i <= heap.getSize(); i++) {
-                        if (heap.get(i) == w) {
-                            heap.delete(i);
-                            break;
-                        }
-                    }*/
+                    heap.deleteVertex(w);
                     heap.insert(w, bw[w]);
                 }
             }
