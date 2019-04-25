@@ -11,3 +11,8 @@ This is a course project of `CSCE 629 Analisis of Algorithms`.
 
 
 ## Compile and Test
+
+```
+$ javac Main.java
+$ java Main | tee output.log
+```

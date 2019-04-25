@@ -4,30 +4,67 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("The Network Optimization demo begins:...");
-        Random r = new Random();
+
         int V = 5000, degree = 6, edgePercent = 20;
+        Random r = new Random();
+
+        if (args.length == 2) {
+            V = Integer.valueOf(args[0]);
+            degree = Integer.valueOf(args[1]);
+        }
+
         long startTime, endTime;
-        int maxbandwidth;
+        int maxBandwidth;
 
         for (int i = 0; i < 5; i++) {
             System.out.println("The " + i + "pairs of graph:");
             Graph g1 = GraphGeneration.firstGraphGeneration(V, degree);
             Graph g2 = GraphGeneration.secondGraphGeneration(V, edgePercent);
+
             for (int j = 0; j < 5; j++) {
                 int source   = r.nextInt(V);
                 int terminal = r.nextInt(V);
                 System.out.println("s = " + source + ", t = " + terminal);
 
-                startTime = System.currentTimeMillis();
                 System.out.println("Dijkstra without heap:");
-                maxbandwidth = Dijkstra.maxBandwidthPathNoHeap(g1, source, terminal);
-                System.out.print("  first graph: bw = " + maxbandwidth);
+
+                startTime = System.currentTimeMillis();
+                maxBandwidth = Dijkstra.maxBandwidthPathNoHeap(g1, source, terminal);
+                System.out.print("  first graph: bw = " + maxBandwidth);
                 endTime = System.currentTimeMillis();
                 System.out.println("  Running time: " + (endTime - startTime) + "ms");
 
                 startTime = System.currentTimeMillis();
-                maxbandwidth = Dijkstra.maxBandwidthPathNoHeap(g2, source, terminal);
-                System.out.print("  second graph: bw = " + maxbandwidth);
+                maxBandwidth = Dijkstra.maxBandwidthPathNoHeap(g2, source, terminal);
+                System.out.print("  second graph: bw = " + maxBandwidth);
+                endTime = System.currentTimeMillis();
+                System.out.println("  Running time: " + (endTime - startTime) + "ms");
+
+                System.out.println("\nDijkstra with heap:");
+
+                startTime = System.currentTimeMillis();
+                maxBandwidth = Dijkstra.maxBandwidthPath(g1, source, terminal);
+                System.out.print("  first graph: bw = " + maxBandwidth);
+                endTime = System.currentTimeMillis();
+                System.out.println("  Running time: " + (endTime - startTime) + "ms");
+
+                startTime = System.currentTimeMillis();
+                maxBandwidth = Dijkstra.maxBandwidthPath(g2, source, terminal);
+                System.out.print("  second graph: bw = " + maxBandwidth);
+                endTime = System.currentTimeMillis();
+                System.out.println("  Running time: " + (endTime - startTime) + "ms");
+
+                System.out.println("\nKruskal:");
+
+                startTime = System.currentTimeMillis();
+                maxBandwidth = Kruskal.maxBandwidthPath(g1, source, terminal);
+                System.out.print("  first graph: bw = " + maxBandwidth);
+                endTime = System.currentTimeMillis();
+                System.out.println("  Running time: " + (endTime - startTime) + "ms");
+
+                startTime = System.currentTimeMillis();
+                maxBandwidth = Kruskal.maxBandwidthPath(g2, source, terminal);
+                System.out.print("  second graph: bw = " + maxBandwidth);
                 endTime = System.currentTimeMillis();
                 System.out.println("  Running time: " + (endTime - startTime) + "ms");
             }

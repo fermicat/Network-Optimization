@@ -84,7 +84,6 @@ public class MaxHeap {
         nameToIndex[name[j]] = j;
     }
 
-
     public String toString() {
         StringBuilder s = new StringBuilder();
         s.append("The heap: \n");
@@ -95,5 +94,4 @@ public class MaxHeap {
 
         return s.toString();
     }
-
 }

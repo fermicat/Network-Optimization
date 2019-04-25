@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class GraphGeneration {
 
+    private static Random r = new Random();
     /**
      * the procedure to generate the graph with average vertex degree
      * @param totalVertex total Vertex in the graph (default 5000)
@@ -10,7 +11,6 @@ public class GraphGeneration {
      */
     public static Graph firstGraphGeneration(int totalVertex, int vertexNum) {
         Graph graph = cycleGraph(totalVertex);
-        Random r = new Random();
 
         // average degree
         while (graph.E() < totalVertex * vertexNum / 2) {
@@ -38,7 +38,6 @@ public class GraphGeneration {
      */
     public static Graph secondGraphGeneration(int totalVertex, int edgePercent) {
         Graph graph = new Graph(totalVertex);
-        Random r = new Random();
 
         for (int i = 0; i < totalVertex; i++) {
             for (int j = i + 2; j < totalVertex; j++) {

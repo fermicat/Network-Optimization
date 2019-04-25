@@ -107,5 +107,4 @@ public class Kruskal {
             status[v] = Color.BLACK;
         }
     }
-
 }

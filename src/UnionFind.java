@@ -34,7 +34,6 @@ public class UnionFind {
         return root;
     }
 
-
     /**
      * Merges the component containing site p with the
      * the component containing site q.
