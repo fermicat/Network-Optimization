@@ -1,7 +1,12 @@
-public class Kruskal {
-    private UnionFind record;
+enum Color {
+    WHITE, GREY, BLACK
+}
 
-    public int maxBandwidthPath(Graph graph) {
+public class Kruskal {
+
+    private static UnionFind record;
+
+    public static int maxBandwidthPath(Graph graph) {
 
         int V = graph.totVertex();
         record = new UnionFind(V);

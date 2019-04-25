@@ -18,19 +18,11 @@ public class Edge {
     }
 
     // the API to return properties of class Edge
-    public int getStart() {
-        return start;
-    }
-
-    public int getEnd() {
-        return end;
-    }
-
     public int getWeight() {
         return weight;
     }
 
-    public int getOtherEnd(int x) {
+    public int getEnd(int x) {
         if (x == start) return end;
         else if (x == end) return start;
         else {

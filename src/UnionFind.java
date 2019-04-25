@@ -3,11 +3,7 @@ public class UnionFind {
     private int[] rank;    // rank[i] = number of sites in tree rooted at i
     private int count;     // number of components
 
-    /**
-     * Initializes an empty union-find data structure with n sites
-     * @param  n the size of set
-     * @throws IllegalArgumentException if {n < 0}
-     */
+    // Constructor
     public UnionFind(int n) {
         if (n < 0) throw new IllegalArgumentException("negative size!");
         count = n;
@@ -18,14 +14,7 @@ public class UnionFind {
             rank[i] = 1;
         }
     }
-
-    /**
-     * @return the number of components
-     */
-    public int count() {
-        return count;
-    }
-
+    
 
     /**
      * Returns the component identifier for the component containing site p.
@@ -90,7 +79,7 @@ public class UnionFind {
     private void validate(int p) {
         int n = parent.length;
         if (p < 0 || p >= n) {
-            throw new IndexOutOfBoundsException("index " + p + " is not between 0 and " + (n - 1));
+            throw new IndexOutOfBoundsException("index " + p + " should between 0 and " + (n - 1));
         }
     }
 }

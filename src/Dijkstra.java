@@ -10,9 +10,9 @@ public class Dijkstra {
     private static int[] bw;
     private static MaxHeap heap;
 
-    public static int maxBandwidthPath(Graph graph, int source, int terminal) {
+    public static int maxBandwidthPathNoHeap(Graph graph, int source, int terminal) {
         // initialize the Dijkstra Algorithm
-        int V = graph.totVertex();
+        int V = graph.V();
         status = new Status[V];
         dad = new int[V];
         bw  = new int[V];
@@ -29,7 +29,7 @@ public class Dijkstra {
         // visit the point adj to the source
         HashSet<Edge> sourceEdgeSet = graph.adj[source];
         for (Edge e : sourceEdgeSet) {
-            int w = e.getOtherEnd(source);
+            int w = e.getEnd(source);
             status[w] = Status.FRINGE;
             dad[w] = source;
             bw[w] = e.getWeight();
@@ -40,19 +40,25 @@ public class Dijkstra {
 
             // pick a fringe with max-bw
             int maxBwIdx = -1;
-            int maxBw = Integer.MIN_VALUE;
+            int maxBwVal = Integer.MIN_VALUE;
             for (int i = 0; i < V; i++) {
-                if (status[i] == Status.FRINGE && bw[i] > maxBw) {
-                    maxBw = bw[i];
+                if (status[i] == Status.FRINGE && bw[i] > maxBwVal) {
+                    maxBwVal = bw[i];
                     maxBwIdx = i;
                 }
             }
 
-            status[maxBwIdx] = Status.INTREE;
+            try {
+                status[maxBwIdx] = Status.INTREE;
+            }
+            catch (Exception e) {
+                System.out.println("maxBwIdx = " + maxBwIdx);
+                throw new IllegalArgumentException("max Bw index illegal!");
+            }
 
             HashSet<Edge> maxBwEdgeSet = graph.adj[maxBwIdx];
             for (Edge e : maxBwEdgeSet) {
-                int w = e.getOtherEnd(maxBwIdx);
+                int w = e.getEnd(maxBwIdx);
                 int minBwValue = Math.min(bw[maxBwIdx], e.getWeight());
 
                 // un-visited vertex
@@ -73,9 +79,9 @@ public class Dijkstra {
     }
 
 
-    public static int maxBandwidthPathHeap(Graph graph, int source, int terminal) {
+    public static int maxBandwidthPath(Graph graph, int source, int terminal) {
         // initialize the Dijkstra Algorithm
-        int V = graph.totVertex();
+        int V = graph.V();
         status = new Status[V];
         dad = new int[V];
         bw  = new int[V];
@@ -93,7 +99,7 @@ public class Dijkstra {
         // visit the point adj to the source and put into heap
         HashSet<Edge> sourceEdgeSet = graph.adj[source];
         for (Edge e : sourceEdgeSet) {
-            int w = e.getOtherEnd(source);
+            int w = e.getEnd(source);
             status[w] = Status.FRINGE;
             dad[w] = source;
             bw[w] = e.getWeight();
@@ -109,7 +115,7 @@ public class Dijkstra {
 
             HashSet<Edge> maxBwEdgeSet = graph.adj[maxBwIdx];
             for (Edge e : maxBwEdgeSet) {
-                int w = e.getOtherEnd(maxBwIdx);
+                int w = e.getEnd(maxBwIdx);
                 int minBwValue = Math.min(bw[maxBwIdx], e.getWeight());
 
                 // un-visited vertex
