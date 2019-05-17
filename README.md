@@ -23,14 +23,14 @@ class Graph {
 	public HashSet<Edge>[] adj;
 	public int V();			// return total vertices 
 	public int E();			// return total edges
-  public void connect(int start, int end, int weight); // connect two ends
+  	public void connect(int start, int end, int weight); // connect two ends
 	public String toString(); 	// return the String form
 } 
 ```
 
 The static class `GraphGeneration` is designed for two graph generators:
 ```
-public static Graph firstGraphGeneration(int V, int degree);
+public static Graph firstGraphGeneration( int V, int degree);
 public static Graph secondGraphGeneration(int V, int percent);
 ```
 
@@ -40,17 +40,17 @@ The class `MaxHeap` is a max-heap data structure for Dijkstra Algorithms. In thi
 ```
 class MaxHeap {
 	public int maximum();			// return the maximum, O(1)
-public void insert(int v, int bw);// insert the edge, O(log n)
-public void delete(int index);	// delete by index, O(log n)
-public void deleteVertex(int v);	//delete by vertex name, O(log n)
-public boolean isEmpty();		// return true if heap is empty
+	public void insert(int v, int bw);	// insert the edge, O(log n)
+	public void delete(int index);		// delete by index, O(log n)
+	public void deleteVertex(int v);	//delete by vertex name, O(log n)
+	public boolean isEmpty();		// return true if heap is empty
 }
 ```
 The `UnionFind` class is for generating the Maximum Spanning Tree in Kruskal Algorithms, in this protocol, the Union-Find data structure is implemented with Weighted and Optimization (compare the rank when doing the union operation) and Path Compression Optimization (compress the path tree when doing the find operation), which makes both union and find operations in the time complexity `O(log*(N))`, very very nearly but not equal to `O(1)`:
 ```
 class UnionFind{
-	public int find(int p);		 // find parent, O(log*(N))
-public void union(int p, int q);  // union two ends, O(log*(N))
+	public int find(int p);		   // find parent, O(log*(N))
+	public void union(int p, int q);   // union two ends, O(log*(N))
 }
 ```
 The static class `Dijkstra` and `Kruskal` are non-instantiable class with static methods, which are the implementations of our main routine algorithms: Dijkstra Algorithm without heap, Dijkstra Algorithm with heap and Kruskal Algorithm.
